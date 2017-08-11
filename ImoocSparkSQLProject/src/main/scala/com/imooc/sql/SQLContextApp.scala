@@ -22,6 +22,8 @@ object SQLContextApp {
     val people = sqlContext.read.format("json").load(path)
     people.printSchema()
     people.show()
+
+    people.write.format("parquet").save(path)
     //3)关闭资源
     sc.stop()
   }
